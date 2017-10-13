@@ -1,5 +1,5 @@
 angular.module('student.controller', [])
-        .controller('StudentController', ['$scope', '$location', 'studentService', function ($scope, $location, studentService) {
+        .controller('StudentController', ['$scope', '$location', '$route', 'studentService', function ($scope, $location, $route, studentService) {
 //                $scope.students = [];
 
 //                    studentService.getStudents()
@@ -8,8 +8,9 @@ angular.module('student.controller', [])
 //                                    $scope.students = response.students;
 //                                }
 //                            }, serverError);
+                
+                    $scope.students = studentService.getStudents();
                 $scope.selectAll = false;
-                $scope.students = studentService.getStudents();
                 
                 $scope.selectAllClicked = function(){
                     angular.forEach($scope.students, function(student){
@@ -28,12 +29,14 @@ angular.module('student.controller', [])
                         if(student.checked){
                             studentService.removeStudent(student.id);
                         }
-                    })
+                    });
+                    $scope.students = studentService.getStudents();
                 };
                 
                 $scope.deleteStudent = function (student) {
-                    studentService.removeStudent(student);
-                    $location.path('/student');
+                    studentService.removeStudent(student.id);
+                    $scope.students = studentService.getStudents();
+                    $route.reload();
 //                    studentService.removeStudent(student.id)
 //                            .then(function(response){
 //                                if(response.success){

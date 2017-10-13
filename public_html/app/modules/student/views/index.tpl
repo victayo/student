@@ -1,10 +1,12 @@
 <div class="content">
     <div class="row">
-        <div class="col-md-8"><h4>Students</h4></div>
-        <div class="btn btn-group pull-right">
+        <h4 class="pull-left">Students</h4>
+        <div class="input-group pull-right">
+            <div class="btn-group">
             <a href="#/student/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
             <button class="btn btn-danger" ng-click="multipleDelete()"><i class="fa fa-trash"></i></button>
-            <input type="text" class="form-control" ng-model="studentSearch" placeholder="Search..." />
+            </div>
+            <input type="text" class="form-control" ng-model="studentSearch" placeholder="Search..." style="width: auto" />
         </div>
     </div>
     <div class="panel panel-default">

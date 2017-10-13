@@ -24,6 +24,6 @@
                 <option value="female">Female</option>
             </select>
         </div>
-        <button type="submit" ng-click="saveStudent()" class="btn btn-default">{{button_text}}</button>
+        <button type="submit" ng-click="saveStudent()" class="btn btn-primary">{{button_text}}</button>
     </form>
 </div>

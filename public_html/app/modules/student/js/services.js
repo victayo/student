@@ -1,5 +1,6 @@
 angular.module('student.service', [])
-        .factory('studentService', ['API_ENDPOINT', '$http', function ($http, API_ENDPOINT) {
+        .factory('studentService', ['API_ENDPOINT', '$http', '$cookies', function (API_ENDPOINT, $http, $cookies) {
+                var cookie_key = 'STUDENT';
                 var students = [
                     {
                         id: 1,
@@ -31,12 +32,20 @@ angular.module('student.service', [])
                 ];
                 return {
                     getStudents: function () {
+                        var stud = $cookies.getObject(cookie_key);
+                        if(stud){
+                            return stud;
+                        }
                         return students;
                     },
                     getStudent: function (id) {
-                        for (var i = 0; i < students.length; i++) {
-                            if (id == students[i].id) {
-                                return students[i];
+                        var studs = $cookies.getObject(cookie_key);
+                        if(!studs){
+                            studs = students;
+                        }
+                        for (var i = 0; i < studs.length; i++) {
+                            if (id == studs[i].id) {
+                                return studs[i];
                             }
                         }
                     },
@@ -45,23 +54,33 @@ angular.module('student.service', [])
 //                                .then(function (response) {
 //                                    return response.data;
 //                                });
-                        if (!student.id) {//new student
+                        var studs = $cookies.getObject(cookie_key);
+                        if(!studs){
+                            studs = students;
+                        }
+                        var id = student.id;
+                        if (!id) {//new student
                             student.id = parseInt(students[students.length - 1].id) + 1;
                             student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
-                            students.push(student);
+                            studs.push(student);
                         }else{//update student
-                            var id = student.id;
                             var student = this.getStudent(id);
                             this.removeStudent(id);
-                            students.push(student);
+                            studs.push(student);
                         }
+                        $cookies.putObject(cookie_key, studs);
                     },
                     removeStudent: function (id) {
-                        angular.forEach(students, function (student, key) {
+                        var studs = $cookies.getObject(cookie_key);
+                        if(!studs){
+                            studs = students;
+                        }
+                        angular.forEach(studs, function (student, key) {
                             if (student.id == id) {
-                                students.splice(key, 1);
+                                studs.splice(key, 1);
+                                $cookies.putObject(cookie_key, studs);
                             }
-                        })
+                        });
                     }
                 };
             }])
