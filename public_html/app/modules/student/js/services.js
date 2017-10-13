@@ -11,13 +11,13 @@ angular.module('student.service', [])
                         reg_no: 'ADS/1/2017'
                     },
                     {
-                       id: 2,
+                        id: 2,
                         first_name: 'Sebastian',
                         last_name: 'Franklin',
                         other_name: 'Temitope',
                         fullname: 'Sebatian Franklin Temitope',
                         gender: 'male',
-                        reg_no: 'ADS/2/2017' 
+                        reg_no: 'ADS/2/2017'
                     },
                     {
                         id: 3,
@@ -33,25 +33,33 @@ angular.module('student.service', [])
                     getStudents: function () {
                         return students;
                     },
-                    
-                    getStudent: function(id){
-                       angular.forEach(students, function(student){
-                           if(student.id == id){
-                               return student;
-                           }
-                       });
+                    getStudent: function (id) {
+                        for (var i = 0; i < students.length; i++) {
+                            if (id == students[i].id) {
+                                return students[i];
+                            }
+                        }
                     },
-                    
                     saveStudent: function (student) {
 //                        $http.post(API_ENDPOINT, {student: student})
 //                                .then(function (response) {
 //                                    return response.data;
 //                                });
+                        if (!student.id) {//new student
+                            student.id = parseInt(students[students.length - 1].id) + 1;
+                            student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
+                            console.log(student);
                             students.push(student);
+                        }else{//update student
+                            var id = student.id;
+                            var student = this.getStudent(id);
+                            this.removeStudent(id);
+                            students.push(student);
+                        }
                     },
                     removeStudent: function (id) {
-                        angular.forEach(students, function(student, key){
-                            if(student.id == id){
+                        angular.forEach(students, function (student, key) {
+                            if (student.id == id) {
                                 students.splice(key, 1);
                             }
                         })
