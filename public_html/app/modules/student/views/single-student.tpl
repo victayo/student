@@ -1,12 +1,6 @@
 <div class="content">
     <div class="table-responsive">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th></th>
-                </tr>
-            </thead>
+        <table class="table table-condensed table-bordered">
             <tbody>
                 <tr>
                     <td>First Name</td>

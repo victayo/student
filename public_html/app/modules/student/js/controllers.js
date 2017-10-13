@@ -8,8 +8,29 @@ angular.module('student.controller', [])
 //                                    $scope.students = response.students;
 //                                }
 //                            }, serverError);
+                $scope.selectAll = false;
                 $scope.students = studentService.getStudents();
-
+                
+                $scope.selectAllClicked = function(){
+                    angular.forEach($scope.students, function(student){
+                        student.checked = $scope.selectAll;
+                    });
+                };
+                
+                $scope.studentChecked = function(student){
+                    if($scope.selectAll && !student.checked){
+                        $scope.selectAll = false;
+                    }
+                }
+                
+                $scope.multipleDelete = function(){
+                    angular.forEach($scope.students, function(student){
+                        if(student.checked){
+                            studentService.removeStudent(student.id);
+                        }
+                    })
+                };
+                
                 $scope.deleteStudent = function (student) {
                     studentService.removeStudent(student);
                     $location.path('/student');
@@ -27,7 +48,6 @@ angular.module('student.controller', [])
             }])
         .controller('SingleStudentController', ['$scope', '$routeParams', 'studentService', function ($scope, $routeParams, studentService) {
                 $scope.student = studentService.getStudent($routeParams.id);
-                console.log($scope.student);
             }])
         .controller('AddStudentController', ['$scope', '$location', 'studentService', function ($scope, $location, studentService) {
                 $scope.student = {};
@@ -42,8 +62,7 @@ angular.module('student.controller', [])
 //                                //studentService.errorPopup()?
 //                            })
 //                }
-                $scope.saveStudent = function(){
-                    console.log($scope.student);
+                $scope.saveStudent = function () {
                     studentService.saveStudent($scope.student);
                     $location.path('/student');
                 };

@@ -48,7 +48,6 @@ angular.module('student.service', [])
                         if (!student.id) {//new student
                             student.id = parseInt(students[students.length - 1].id) + 1;
                             student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
-                            console.log(student);
                             students.push(student);
                         }else{//update student
                             var id = student.id;
