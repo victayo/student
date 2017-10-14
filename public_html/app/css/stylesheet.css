@@ -1,0 +1,21 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 14-Oct-2017, 06:07:00
+    Author     : imaleo
+*/
+
+input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid{
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(242, 9, 9, .6);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(242, 9, 9, .6);
+    border-color:red;
+}
+
+.error-message {
+    color: red;
+}
+
+

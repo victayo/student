@@ -1,5 +1,5 @@
 angular.module('student.controller', [])
-        .controller('StudentController', ['$scope', '$location', '$route', 'studentService', function ($scope, $location, $route, studentService) {
+        .controller('StudentController', ['$scope', '$route', 'studentService', 'popupService', function ($scope, $route, studentService, popupService) {
 //                $scope.students = [];
 
 //                    studentService.getStudents()
@@ -8,35 +8,39 @@ angular.module('student.controller', [])
 //                                    $scope.students = response.students;
 //                                }
 //                            }, serverError);
-                
-                    $scope.students = studentService.getStudents();
+
+                $scope.students = studentService.getStudents();
                 $scope.selectAll = false;
-                
-                $scope.selectAllClicked = function(){
-                    angular.forEach($scope.students, function(student){
+
+                $scope.selectAllClicked = function () {
+                    angular.forEach($scope.students, function (student) {
                         student.checked = $scope.selectAll;
                     });
                 };
-                
-                $scope.studentChecked = function(student){
-                    if($scope.selectAll && !student.checked){
+
+                $scope.studentChecked = function (student) {
+                    if ($scope.selectAll && !student.checked) {
                         $scope.selectAll = false;
                     }
                 }
-                
-                $scope.multipleDelete = function(){
-                    angular.forEach($scope.students, function(student){
-                        if(student.checked){
-                            studentService.removeStudent(student.id);
-                        }
-                    });
-                    $scope.students = studentService.getStudents();
+
+                $scope.multipleDelete = function () {
+                    if (popupService.showPopup('Are you sure you want to delete')) {
+                        angular.forEach($scope.students, function (student) {
+                            if (student.checked) {
+                                studentService.removeStudent(student.id);
+                            }
+                        });
+                        $scope.students = studentService.getStudents();
+                    }
                 };
-                
+
                 $scope.deleteStudent = function (student) {
-                    studentService.removeStudent(student.id);
-                    $scope.students = studentService.getStudents();
-                    $route.reload();
+                    if (popupService.showPopup('Are you sure you want to delete')) {
+                        studentService.removeStudent(student.id);
+                        $scope.students = studentService.getStudents();
+                        $route.reload();
+                    }
 //                    studentService.removeStudent(student.id)
 //                            .then(function(response){
 //                                if(response.success){

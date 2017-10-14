@@ -1,6 +1,7 @@
 angular.module('app', [
     'ngRoute',
     'ngCookies',
+    'ngMessages',
     'student'
 ]);
 

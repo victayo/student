@@ -84,6 +84,11 @@ angular.module('student.service', [])
                     }
                 };
             }])
+                .service('popupService', ['$window', function($window){
+                        this.showPopup = function(message){
+                            return $window.confirm(message);
+                        };
+            }])
         .value('API_ENDPOINT', '');
 
 
