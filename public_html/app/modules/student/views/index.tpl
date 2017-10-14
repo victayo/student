@@ -1,17 +1,25 @@
-<div class="content">
-    <div class="row">
-        <div class="container-fluid">
-            <div class="pull-right">
-                <a href="#/student/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
-                <button class="btn btn-danger" ng-click="multipleDelete()"><i class="fa fa-trash"></i></button>
-               <!-- <input type="text" class="form-control" ng-model="studentSearch" placeholder="Search..." style="width: auto" /> -->
-            </div>
-            <h4>Students</h4>
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a href="#/student/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+            <button class="btn btn-danger" ng-click="multipleDelete()" data-toggle="tooltip" data-original-title="Delete" title="Delete"><i class="fa fa-trash"></i></button>
+            
         </div>
+        <h1>Students</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Students</li>
+        </ol>
     </div>
+</div>
+<div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <i class="fa fa-list"></i>
+            <h3 class="panel-title">
+                <i class="fa fa-list"></i>
+                Student List
+            </h3>
+            <input type="text" class="form-control pull-right" ng-model="studentSearch" placeholder="Search..." style="width: auto" />
         </div>
         <div class="table-responsive">
             <table class="table table-hover table-bordered">
