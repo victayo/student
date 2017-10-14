@@ -1,4 +1,16 @@
-<div class="row">
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="pull-right">
+            <a href="#/student" class="btn btn-default" data-toggle="tooltip" title="Cancel" data-original-title="Cancel"><i class="fa fa-reply"></i></a>
+        </div>
+        <h1>Students</h1>
+        <ol class="breadcrumb">
+            <li><a href="#">Home</a></li>
+            <li class="active">Students</li>
+        </ol>
+    </div>
+</div>
+<div class="container-fluid">
     <form name="studentForm" class="form-horizontal" ng-submit="saveStudent()" novalidate>
         <div class="form-group">
             <label for="first_name" class="col-sm-2">First Name</label>

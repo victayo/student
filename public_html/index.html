@@ -16,7 +16,7 @@
     </head>
 
     <body ng-app="app">
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <header class="navbar navbar-inverse navbar-fixed-top">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,18 +29,13 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Dashboard</a></li>
                         <li><a href="#">Settings</a></li>
                         <li><a href="#">Profile</a></li>
                         <li><a href="#">Help</a></li>
                     </ul>
-                    <form class="navbar-form navbar-right">
-                        <input type="text" class="form-control" placeholder="Search...">
-                    </form>
                 </div>
             </div>
-        </div>
-
+        </header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-3 col-md-2 sidebar">
@@ -58,13 +53,9 @@
                 </div>
                 
                 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                    <h1 class="page-header">Dashboard</h1>
-                    <ul class="nav nav-sidebar">
-                        <li><a href="#/student">Students</a></li>
-                        <li><a href="#/student">View All</a></li>
-                        <li><a href="#/student/add">Add Student</a></li>
-                    </ul>
-                    <ng-view></ng-view>
+                    <div id="content">
+                        <ng-view></ng-view>
+                    </div>
                 </div>
             </div>
         </div>
@@ -80,6 +71,7 @@
         <script src="app/lib/docs.min.js"></script>
         
         <script src="app/js/app.js"></script>
+        <script src="app/js/common.js"></script>
         
         <script src="app/modules/student/student.js"></script>
         <script src="app/modules/student/student.js"></script>
