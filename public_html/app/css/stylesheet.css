@@ -18,4 +18,7 @@ input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid{
     color: red;
 }
 
+.sidebar{
+    background-color: #222;
+}
 
