@@ -1,0 +1,36 @@
+{
+  "name": "student",
+  "version": "1.0.0",
+  "description": "A web application for managing students in a school",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "debug": "^0.7.4",
+    "cookie-parser": "^1.0.1",
+    "body-parser": "^1.0.2",
+    "express-session": "^1.7.6",
+    "ejs": "^0.8.8",
+    "mongoose": "^3.8.15",
+    "express": "^4.2.0",
+    "morgan": "^1.0.1",
+    "passport": "^0.2.0",
+    "passport-local": "^1.0.0",
+    "static-favicon": "^1.0.2",
+    "mongoose-auto-increment": "^3.0.8",
+    "cors": "^2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "student",
+    "management",
+    "school"
+  ],
+  "author": "Okala Victor",
+  "license": "ISC"
+}
