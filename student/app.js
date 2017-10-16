@@ -13,9 +13,9 @@ app.use(express.static(__dirname + "/public"));
 app.use(logger("dev"));
 app.use(bodyParser.urlencoded({extended: false}));
 
-app.get("/student", function(request, response){
-	response.render("student/index");
-});
+app.get("/", function(request, response){
+    response.render("index");
+})
 
 app.use(function(request, response){
 	response.status(404).render("404");
