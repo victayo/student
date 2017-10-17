@@ -40,7 +40,7 @@
                             <a href="#/student/edit/{{student.id}}" class="btn btn-primary">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <button class="btn btn-danger" ng-click="deleteStudent(student)">
+                            <button class="btn btn-danger" ng-click="deleteStudent(student.id)">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>
