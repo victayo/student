@@ -1,5 +1,6 @@
 var express = require('express');
 var api = express.Router();
+var student_route = "/student";
 var students = [{
         id: 1,
         first_name: 'Okala',
@@ -28,14 +29,6 @@ var students = [{
         reg_no: 'ADS/3/2017'
     }];
 
-function getStudent(id) {
-    students.forEach(function (student) {
-        if (student.id == id) {
-            return student;
-        }
-    });
-}
-
 function deleteStudent(id) {
     students.forEach(function (student, index) {
         if (student.id == id) {
@@ -44,51 +37,54 @@ function deleteStudent(id) {
     });
 }
 
-api.get('/student', function (request, response) {
-    response.json({
-        students: students,
-        success: true
-    });
-});
-api.post('/student', function (request, response) {
-    var student = request.body;
-    var id = student.id;
-    if (!id) {//new student
-        var length = students.length;
-        student.id = !length ? 1 : parseInt(students[students.length - 1].id) + 1;
-        student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
-        students.push(student);
-    } else {//update student
-        deleteStudent(id);
-        student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
-        students.push(student);
-    }
-    response.json({success: true});
-});
-api.get('/student/:id', function (request, response) {
-    var id = request.params.id; console.log(id);
-    var student;
-    for (var i = 0; i < students.length; i++) {
-        if (students[i].id == id) {
-            student = students[i];
-            break;
-        }
-    }
-    response.json({
-        student: student,
-        success: !student ? false : true
-    });
-});
-
-api.delete('/student/:id', function (request, response) {
-    var id = request.params.id;
-    students.forEach(function (student, index) {
-        if (student.id == id) {
-            students.splice(index, 1);
-        }
-    });
-    response.json({success: true});
-});
+api.route(student_route)
+        .get(function (request, response) {
+            response.json({
+                students: students,
+                success: true
+            });
+        })
+        .post(function (request, response) {
+            var student = request.body;
+            var id = student.id;
+            if (!id) {//new student
+                var length = students.length;
+                student.id = !length ? 1 : parseInt(students[students.length - 1].id) + 1;
+                student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
+                students.push(student);
+            } else {//update student
+                deleteStudent(id);
+                student.fullname = student.first_name + ' ' + student.last_name + ' ' + student.other_name;
+                students.push(student);
+            }
+            response.json({success: true});
+        });
+        
+api.route(student_route + "/:id")
+        .get(function (request, response) {
+            var id = request.params.id;
+            console.log(id);
+            var student;
+            for (var i = 0; i < students.length; i++) {
+                if (students[i].id == id) {
+                    student = students[i];
+                    break;
+                }
+            }
+            response.json({
+                student: student,
+                success: !student ? false : true
+            });
+        })
+        .delete(function (request, response) {
+            var id = request.params.id;
+            students.forEach(function (student, index) {
+                if (student.id == id) {
+                    students.splice(index, 1);
+                }
+            });
+            response.json({success: true});
+        });
 
 module.exports = api;
 
