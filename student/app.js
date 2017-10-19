@@ -3,10 +3,18 @@ var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
+var mongoose = require("mongoose");
 var studentRouter = require("./routes/student.js");
 
 var app = express();
+var dbName = 'student';
 
+var connectionString='mongodb://127.0.0.1:27017/'+dbName;
+if(process.env.OPENSHIFT_MONGODB_DB_URL){
+  connectionString = process.env.OPENSHIFT_MONGODB_DB_URL + dbName;
+}
+
+mongoose.connect(connectionString);
 app.set("views", path.resolve(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.resolve(__dirname, "public")));

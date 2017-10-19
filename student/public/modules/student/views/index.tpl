@@ -34,13 +34,13 @@
                 <tbody>
                     <tr ng-repeat="student in students | orderBy:'first_name' | filter:studentSearch">
                         <th><input type="checkbox" ng-model="student.checked" ng-click="studentChecked(student)"/></th>
-                        <td class="text-capitalize"><a href="#/student/view/{{student.id}}">{{student.fullname}}</a></td>
+                        <td class="text-capitalize"><a href="#/student/view/{{student._id}}">{{student.fullname}}</a></td>
                         <td>{{student.reg_no}}</td>
                         <td class="text-right">
-                            <a href="#/student/edit/{{student.id}}" class="btn btn-primary">
+                            <a href="#/student/edit/{{student._id}}" class="btn btn-primary">
                                 <i class="fa fa-pencil"></i>
                             </a>
-                            <button class="btn btn-danger" ng-click="deleteStudent(student.id)">
+                            <button class="btn btn-danger" ng-click="deleteStudent(student._id)">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>

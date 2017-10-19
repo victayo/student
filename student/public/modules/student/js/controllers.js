@@ -72,6 +72,7 @@ angular.module('student.controller', [])
                 $scope.student = {};
                 $scope.button_text = 'Add';
                 $scope.saveStudent = function () {
+                    $scope.student.fullname = $scope.student.first_name+' '+$scope.student.other_name+' '+$scope.student.last_name;
                     studentService.saveStudent($scope.student)
                             .then(function (response) {
                                 if (response.success) {
@@ -93,6 +94,7 @@ angular.module('student.controller', [])
                         });
 
                 $scope.saveStudent = function () {
+                    $scope.student.fullname = $scope.student.first_name+' '+$scope.student.other_name+' '+$scope.student.last_name;
                     studentService.saveStudent($scope.student)
                             .then(function (response) {
                                 if (response.success) {
