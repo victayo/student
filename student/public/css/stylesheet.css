@@ -42,6 +42,7 @@ input.ng-dirty.ng-invalid, select.ng-dirty.ng-invalid{
 
 .navbar-inverse {
     border-color: #222;
+    background-color: #FFFFFF;
 }
 
 .panel-heading h3 {

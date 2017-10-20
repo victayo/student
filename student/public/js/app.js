@@ -1,9 +1,7 @@
 angular.module('app', [
     'ngRoute',
-    'ngCookies',
     'ngMessages',
     'student',
-    'dashboard'
 ]);
 
 angular.module('app')
@@ -11,10 +9,6 @@ angular.module('app')
             $locationProvider.hashPrefix('');
             $routeProvider
                     .when('/', {
-                        templateUrl: '/modules/dashboard/views/index.tpl',
-                        controller: 'DashboardController'
-                    })
-                    .when('/student', {
                         templateUrl: '/modules/student/views/index.tpl',
                         controller: 'StudentController'
                     })
@@ -30,6 +24,9 @@ angular.module('app')
                         templateUrl: '/modules/student/views/student-form.tpl',
                         controller: 'EditStudentController'
                     })
-        })
-
+                            .otherwise({
+                                redirectTo: '/'
+                    });
+                    $locationProvider.html5Mode(true);
+        });
 

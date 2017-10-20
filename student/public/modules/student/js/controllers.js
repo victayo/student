@@ -2,6 +2,7 @@ angular.module('student.controller', [])
         .controller('StudentController', ['$scope', '$route', 'studentService', 'popupService', function ($scope, $route, studentService, popupService) {
                 $scope.students = [];
                 $scope.selectAll = false;
+                $scope.title = 'Student Manager';
                 studentService.getStudent()
                         .then(function (response) {
                             if (response.success) {
@@ -37,7 +38,7 @@ angular.module('student.controller', [])
 //                        });
                         angular.forEach($scope.students, function (student) {
                             if (student.checked) {
-                                studentService.removeStudent(student.id);
+                                studentService.removeStudent(student._id);
                             }
                         });
                         $route.reload();
@@ -76,7 +77,7 @@ angular.module('student.controller', [])
                     studentService.saveStudent($scope.student)
                             .then(function (response) {
                                 if (response.success) {
-                                    $location.path('/student');
+                                    $location.path('/');
                                 }
                             }, function () {
                                 //studentService.errorPopup()?
@@ -99,7 +100,7 @@ angular.module('student.controller', [])
                             .then(function (response) {
                                 if (response.success) {
 //                                    redirect to route /student
-                                    $location.path('/student');
+                                    $location.path('/');
                                 }
                             }, function () {
                                 //studentService.errorPopup()?

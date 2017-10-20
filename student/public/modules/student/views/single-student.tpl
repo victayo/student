@@ -1,11 +1,11 @@
 <div class="page-header">
     <div class="container-fluid">
         <div class="pull-right">
-            <a href="#/student" class="btn btn-default" data-toggle="tooltip" title="Back" data-original-title="Back"><i class="fa fa-arrow-left"></i></a>
+            <a href="/" class="btn btn-default" data-toggle="tooltip" title="Back" data-original-title="Back"><i class="fa fa-arrow-left"></i></a>
         </div>
         <h1>Students</h1>
         <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li class="active">Students</li>
         </ol>
     </div>

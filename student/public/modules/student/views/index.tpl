@@ -1,13 +1,13 @@
 <div class="page-header">
     <div class="container-fluid">
         <div class="pull-right">
-            <a href="#/student/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
+            <a href="/student/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
             <button class="btn btn-danger" ng-click="multipleDelete()" data-toggle="tooltip" data-original-title="Delete" title="Delete"><i class="fa fa-trash"></i></button>
             
         </div>
         <h1>Students</h1>
         <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
+            <li><a href="/">Home</a></li>
             <li class="active">Students</li>
         </ol>
     </div>
@@ -34,10 +34,10 @@
                 <tbody>
                     <tr ng-repeat="student in students | orderBy:'first_name' | filter:studentSearch">
                         <th><input type="checkbox" ng-model="student.checked" ng-click="studentChecked(student)"/></th>
-                        <td class="text-capitalize"><a href="#/student/view/{{student._id}}">{{student.fullname}}</a></td>
+                        <td class="text-capitalize"><a href="/student/view/{{student._id}}">{{student.fullname}}</a></td>
                         <td>{{student.reg_no}}</td>
                         <td class="text-right">
-                            <a href="#/student/edit/{{student._id}}" class="btn btn-primary">
+                            <a href="/student/edit/{{student._id}}" class="btn btn-primary">
                                 <i class="fa fa-pencil"></i>
                             </a>
                             <button class="btn btn-danger" ng-click="deleteStudent(student._id)">
