@@ -3,7 +3,6 @@
         <div class="pull-right">
             <a href="/student/add" class="btn btn-primary"><i class="fa fa-plus"></i></a>
             <button class="btn btn-danger" ng-click="multipleDelete()" data-toggle="tooltip" data-original-title="Delete" title="Delete"><i class="fa fa-trash"></i></button>
-            
         </div>
         <h1>Students</h1>
         <ol class="breadcrumb">
